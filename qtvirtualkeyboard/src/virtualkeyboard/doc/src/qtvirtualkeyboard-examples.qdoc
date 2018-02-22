@@ -1,0 +1,83 @@
+/****************************************************************************
+**
+** Copyright (C) 2016 The Qt Company Ltd.
+** Contact: https://www.qt.io/licensing/
+**
+** This file is part of the Qt Virtual Keyboard module of the Qt Toolkit.
+**
+** $QT_BEGIN_LICENSE:GPL$
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The Qt Company. For licensing terms
+** and conditions see https://www.qt.io/terms-conditions. For further
+** information use the contact form at https://www.qt.io/contact-us.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3 or (at your option) any later version
+** approved by the KDE Free Qt Foundation. The licenses are as published by
+** the Free Software Foundation and appearing in the file LICENSE.GPL3
+** included in the packaging of this file. Please review the following
+** information to ensure the GNU General Public License requirements will
+** be met: https://www.gnu.org/licenses/gpl-3.0.html.
+**
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+
+/*!
+    \group qtvirtualkeyboard-examples
+    \brief Examples for Qt Virtual Keyboard
+    \title Qt Virtual Keyboard Examples
+*/
+
+/*!
+    \title Qt Quick Virtual Keyboard - Basic Example
+    \example basic
+    \brief This is a basic QML example that uses the virtual keyboard.
+    \ingroup qtvirtualkeyboard-examples
+    \image basic-example.png
+
+    The example has two implementations: one for the desktop
+    platforms and another for the embedded platforms. The former version
+    enables text input into several text fields using the virtual keyboard,
+    whereas the latter version uses the same UI but with a custom virtual
+    keyboard InputPanel. The following snippet from
+    \c basic.pro shows how the qmake project is set up to choose the
+    appropriate implementation based on the CONFIG options:
+
+    \quotefromfile basic/basic.pro
+    \skipto android-embedded
+    \printuntil /^\}$/
+
+    The example enables the virtual keyboard by setting the \c QT_IM_MODULE
+    environment variable before loading the \c .qml file:
+
+    \quotefromfile basic/main.cpp
+    \skipto #include
+    \printuntil }
+
+    Besides this, it uses custom TextField and TextArea items to configure the
+    \e[ENTER] key behavior using the EnterKeyAction attached property.
+
+    \quotefromfile basic/Basic.qml
+    \skipto import
+    \printuntil Rectangle
+    \dots
+    \skipto TextField
+    \printuntil }
+    \dots
+    \skipto TextArea
+    \printuntil }
+    \skipto /^\}$/
+    \printuntil }
+
+    The TextField and TextArea are inherited from the TextBase custom type,
+    which has \c enterKeyEnabled, \c enterKeyText, and \c enterKeyAction
+    properties. The TextField and TextArea instances in the snippet can
+    set these properties to change the default behavior.
+
+    \include examples-run.qdocinc
+*/
